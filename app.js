@@ -1,14 +1,27 @@
 // --------------------Dark and light mode------------------------------------
+let on = 0;
+
 $(document).ready(function(){
-    $('#mode').click(function(){
-        $('#mode').toggleClass('active')
-        $('main').toggleClass('dark')
-        $('#testimonials').toggleClass('dark')
-        $('#services').toggleClass('dark')
-        $('#prestation').toggleClass('dark')
+    $('#mode').click(() => {
+        on == 0 ? on = 1 : on = 0;
+        tog();
     })
 })
 
+function tog(){
+    on == 1 ? localStorage.setItem('modeItem', on) : localStorage.clear();
+    $('#mode').toggleClass('active')
+    $('main').toggleClass('dark')
+    $('#testimonials').toggleClass('dark')
+    $('#services').toggleClass('dark')
+    $('#prestation').toggleClass('dark')
+    $('.swiper-container').toggleClass('dark')
+}
+
+if(localStorage.getItem('modeItem') != undefined){
+    on = localStorage.getItem('modeItem');
+    tog();
+}
 // -------------------------------Accordeon------------------------------------
 
 var acc = document.getElementsByClassName("accordion");
@@ -45,7 +58,7 @@ new ScrollMagic.Scene({
 // Typing-----------------------------------------------
 const typedTextSpan = document.querySelector(".typed-text");
 
-const textArray = ["Bonjour", "Bienvenue dans mon agence web", "n'hésitez pas à m'envoyer un message", "à bientôt:)"];
+const textArray = ["Bonjour", "Bienvenue dans notre agence web", "n'hésitez pas à nous envoyer un message", "à bientôt:)"];
 const typingDelay = 200;
 const erasingDelay = 100;
 const newTextDelay = 2000;
@@ -81,7 +94,32 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(type, typingDelay + 250);
 });
 
+/* --------------------------responsive navbar------------------------------------------ */
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
 
 
-
+// -----------------------  Initialize Swiper --------------------
+var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2,
+        slideShadows : true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+});
 
