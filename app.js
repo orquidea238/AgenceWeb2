@@ -58,7 +58,7 @@ new ScrollMagic.Scene({
 // Typing-----------------------------------------------
 const typedTextSpan = document.querySelector(".typed-text");
 
-const textArray = ["Bonjour", "Bienvenue dans notre agence web", "n'hésitez pas à nous envoyer un message", "à bientôt:)"];
+const textArray = ["Bonjour", "Bienvenue dans l'agence web CIAO"];
 const typingDelay = 200;
 const erasingDelay = 100;
 const newTextDelay = 2000;
